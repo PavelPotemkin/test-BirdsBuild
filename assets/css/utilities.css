@@ -9,3 +9,33 @@
     white-space: nowrap;
     border-width: 0;
 }
+
+.text-accent-1 {
+    color: var(--blue-dark);
+}
+
+.text-accent-2 {
+    color: var(--manatee);
+}
+
+.text-accent-3 {
+    color: var(--blue-light);
+}
+
+.fill-accent-1 {
+    fill: var(--blue-dark);
+}
+
+.fill-accent-2 {
+    fill: var(--manatee);
+}
+
+.fill-accent-3 {
+    fill: var(--blue-light);
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

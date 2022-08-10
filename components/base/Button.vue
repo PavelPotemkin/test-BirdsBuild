@@ -4,16 +4,19 @@ import { computed } from '#imports'
 interface Props {
   type?: 'secondary' | 'primary' | 'thirdly'
   size?: 'sm' | 'md'
+  wide?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
   type: 'primary',
-  size: 'md'
+  size: 'md',
+  wide: false
 })
 
 const classObj = computed(() => ({
   [`btn_type_${props.type}`]: true,
-  [`btn_size_${props.size}`]: true
+  [`btn_size_${props.size}`]: true,
+  btn_wide: props.wide
 }))
 </script>
 
@@ -46,13 +49,13 @@ const classObj = computed(() => ({
 .btn_type_secondary {
   color: var(--white);
   fill: var(--white);
-  background-color: var(--green);
+  background-color: var(--blue-dark);
 }
 
 .btn_type_thirdly {
   color: var(--white);
   fill: var(--white);
-  background-color: var(--blue-dark);
+  background-color: var(--green);
 }
 
 .btn_size_sm {
@@ -63,5 +66,9 @@ const classObj = computed(() => ({
 .btn_size_md {
   min-height: 50px;
   min-width: 50px;
+}
+
+.btn_wide {
+  width: 100%;
 }
 </style>

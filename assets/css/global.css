@@ -6,10 +6,19 @@ html {
     font-family: 'Rubik', sans-serif;
 }
 
+p {
+    margin: 0;
+}
+
+ul {
+    padding: 0;
+}
+
 :root {
     --white: #FFFFFF;
     --white-gray: #F4F5F9;
     --blue-dark: #2D3B87;
+    --blue-light: #616CA5;
     --green: #69C57F;
     --manatee: #969DC3;
     --platinum: #E0E3EE;

@@ -1,22 +1,29 @@
 .title-s {
     font-style: normal;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 13px;
     line-height: 100%;
 }
 
 .title-m {
     font-style: normal;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 15px;
     line-height: 100%;
 }
 
 .title-m-v2 {
     font-style: normal;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 15px;
     line-height: 125%;
+}
+
+.title-m-v3 {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 150%;
 }
 
 .title-l {
@@ -26,7 +33,21 @@
     line-height: 100%;
 }
 
+.title-xl {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 100%;
+}
+
 .text {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 100%;
+}
+
+.text-m {
     font-style: normal;
     font-weight: 400;
     font-size: 13px;
