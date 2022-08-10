@@ -5,4 +5,8 @@ export default defineNuxtConfig({
         global: true,
         dirs: ['~/components']
     },
+
+    css: [
+        '@/assets/css/index.css'
+    ]
 })
