@@ -1,0 +1,67 @@
+<script setup lang="ts">
+import { computed } from '#imports'
+
+interface Props {
+  type?: 'secondary' | 'primary' | 'thirdly'
+  size?: 'sm' | 'md'
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  type: 'primary',
+  size: 'md'
+})
+
+const classObj = computed(() => ({
+  [`btn_type_${props.type}`]: true,
+  [`btn_size_${props.size}`]: true
+}))
+</script>
+
+<template>
+  <button
+    type="button"
+    class="btn title-m"
+    :class="classObj"
+  >
+    <slot />
+  </button>
+</template>
+
+<style scoped>
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  border: 0;
+  cursor: pointer;
+}
+
+.btn_type_primary {
+  color: var(--blue-dark);
+  fill: var(--blue-dark);
+  background-color: var(--white-gray);
+}
+
+.btn_type_secondary {
+  color: var(--white);
+  fill: var(--white);
+  background-color: var(--green);
+}
+
+.btn_type_thirdly {
+  color: var(--white);
+  fill: var(--white);
+  background-color: var(--blue-dark);
+}
+
+.btn_size_sm {
+  min-height: 40px;
+  min-width: 40px;
+}
+
+.btn_size_md {
+  min-height: 50px;
+  min-width: 50px;
+}
+</style>

@@ -5,3 +5,12 @@ body {
 html {
     font-family: 'Rubik', sans-serif;
 }
+
+:root {
+    --white: #FFFFFF;
+    --white-gray: #F4F5F9;
+    --blue-dark: #2D3B87;
+    --green: #69C57F;
+    --manatee: #969DC3;
+    --platinum: #E0E3EE;
+}
