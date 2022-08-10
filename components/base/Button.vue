@@ -18,7 +18,7 @@ const classObj = computed(() => ({
   [`btn_type_${props.type}`]: true,
   [`btn_size_${props.size}`]: true,
   btn_wide: props.wide,
-  btn_disabled: !!props.disabled
+  'btn_disabled button-medium': !!props.disabled
 }))
 </script>
 
@@ -75,7 +75,8 @@ const classObj = computed(() => ({
 }
 
 .btn_disabled {
-  border-color: var(--platinum);
+  border: 1px solid var(--platinum);
   color: var(--manatee);
+  background-color: var(--white);
 }
 </style>

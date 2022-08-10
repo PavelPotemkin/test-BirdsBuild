@@ -12,8 +12,8 @@ defineProps<Props>()
   <section class="product-list">
     <ProductCard
       v-for="product in products"
-      v-bind="product"
-      :key="product.name"
+      :key="product.id"
+      :product="product"
     />
   </section>
 </template>

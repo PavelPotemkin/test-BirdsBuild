@@ -1,3 +1,11 @@
+<script setup lang="ts">
+import { useProductStore } from '~/stores/product'
+
+const store = useProductStore()
+</script>
+
 <template>
-  «Сделки»
+  <ProductCatalog
+    :products="store.deals"
+  />
 </template>

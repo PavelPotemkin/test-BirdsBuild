@@ -25,5 +25,7 @@ export default defineNuxtConfig({
         symbolId: 'icon-[dir]-[name]'
       })
     ]
-  }
+  },
+
+  buildModules: ['@pinia/nuxt']
 })

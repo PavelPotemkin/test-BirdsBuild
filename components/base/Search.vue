@@ -15,7 +15,6 @@ const emit = defineEmits<{
 const input = ref('')
 
 const submit = useDebounce(() => {
-  console.log('submit')
   emit('change', input.value)
 })
 </script>
@@ -23,7 +22,7 @@ const submit = useDebounce(() => {
 <template>
   <form class="search-form" @submit.prevent="submit">
     <input
-      v-model="input"
+      v-model.trim="input"
       :placeholder="placeholder"
       class="search-form__input text-l text-accent-1"
       type="text"

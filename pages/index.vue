@@ -1,24 +1,11 @@
 <script setup lang="ts">
-import { useFetch } from '#imports'
-import type { Product } from '~/components/product/card/Index.vue'
-import { apiUrls } from '~/api/urls'
+import { useProductStore } from '~/stores/product'
 
-const {
-  data: products,
-  pending: isLoading
-} = await useFetch<Product[]>(apiUrls.products)
-
+const store = useProductStore()
 </script>
 
 <template>
   <ProductCatalog
-    :loading="isLoading"
-    :products="products"
+    :products="store.stock"
   />
 </template>
-
-<style scoped>
-.main-page {
-
-}
-</style>

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { defineProps } from '@vue/runtime-core'
+import { DealsStorageName, FavoritesStorageName, useProductStore } from '~/stores/product'
 
 export interface Product {
   id: number,
@@ -14,20 +15,47 @@ export interface Product {
   image: string
   status: string
   favorite: boolean
+  deal: boolean
+  payed: boolean
 }
 
-defineProps<Product>()
+const props = defineProps<{
+  product: Product
+}>()
 
-const favAdd = () => {
-  // console.log('favAdd')
+const { add, remove, pay } = useProductStore()
+
+const favHandle = () => {
+  const favStorageName: FavoritesStorageName = 'favorites'
+
+  if (props.product.favorite) {
+    remove(favStorageName, props.product)
+  } else {
+    add(favStorageName, props.product)
+  }
 }
 
-const dealAdd = () => {
-  // console.log('dealAdd')
+const dealHandle = () => {
+  const dealStorageName: DealsStorageName = 'deals'
+
+  if (props.product.deal) {
+    remove(dealStorageName, props.product)
+  } else {
+    add(dealStorageName, props.product)
+  }
 }
 
-const pay = () => {
-  // console.log('pay')
+const tryPay = async () => {
+  try {
+    await pay(props.product)
+  } catch (e) {
+    // eslint-disable-next-line no-console
+    console.warn(e)
+  }
+}
+
+const payHandle = async () => {
+  await tryPay()
 }
 
 </script>
@@ -36,24 +64,26 @@ const pay = () => {
   <div class="product-card">
     <ProductCardInfo
       class="product-card__info"
-      :type="type"
-      :name="name"
-      :city="city"
-      :seller="seller"
-      :category="category"
-      :description="description"
-      :image="image"
+      :type="product.type"
+      :name="product.name"
+      :city="product.city"
+      :seller="product.seller"
+      :category="product.category"
+      :description="product.description"
+      :image="product.image"
     />
 
     <ProductCardTotal
       class="product-card__total"
-      :price="price"
-      :count="count"
-      :status="status"
-      :favorite="favorite"
-      @favAdd="favAdd"
-      @dealAdd="dealAdd"
-      @pay="pay"
+      :price="product.price"
+      :count="product.count"
+      :status="product.status"
+      :favorite="product.favorite"
+      :deal="product.deal"
+      :payed="product.payed"
+      @fav="favHandle"
+      @deal="dealHandle"
+      @pay="payHandle"
     />
   </div>
 </template>

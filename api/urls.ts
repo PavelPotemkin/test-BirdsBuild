@@ -1,3 +1,4 @@
 export const apiUrls = {
-  products: '/api/products'
+  products: '/api/products',
+  pay: '/api/pay'
 }

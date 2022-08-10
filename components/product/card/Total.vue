@@ -8,41 +8,46 @@ interface Props {
   count: number
   status: string
   favorite: boolean
+  deal: boolean
+  payed: boolean
 }
 
 const props = defineProps<Props>()
 
 const emit = defineEmits<{
-  (e: 'favAdd'): void
-  (e: 'dealAdd'): void
+  (e: 'fav'): void
+  (e: 'deal'): void
   (e: 'pay'): void
 }>()
 
-const fullPrice = props.price * props.count
+const fullPrice = (props.price * props.count).toLocaleString('ru')
 
 const listData = [{
   name: 'Количество',
   value: `${props.count} шт.`
 }, {
   name: 'Стоимость за штуку',
-  value: `${props.price} ₽`
+  value: `${props.price.toLocaleString('ru')} ₽`
 }]
 
-const fav = useThrottle(() => {
-  emit('favAdd')
+const isFav = computed(() => props.favorite)
+const isDeal = computed(() => props.deal)
+const isPayed = computed(() => props.payed)
+
+const favBtnType = computed(() => isFav.value ? 'secondary' : 'primary')
+
+const favHandle = useThrottle(() => {
+  emit('fav')
 })
 
-const deal = useThrottle(() => {
-  emit('dealAdd')
+const dealHandle = useThrottle(() => {
+  emit('deal')
 })
 
-const pay = useThrottle(() => {
+const payHandle = useThrottle(() => {
   emit('pay')
 })
 
-const shouldPay = computed(() => props.favorite)
-
-const favBtnType = computed(() => props.favorite ? 'secondary' : 'primary')
 </script>
 
 <template>
@@ -70,29 +75,42 @@ const favBtnType = computed(() => props.favorite ? 'secondary' : 'primary')
     </div>
 
     <div class="product-card-total__footer">
-      <BaseButton
-        v-if="shouldPay"
-        type="thirdly"
-        wide
-        @click="pay"
-      >
-        Оплатить
-      </BaseButton>
+      <template v-if="isPayed">
+        <BaseButton
+          wide
+          size="sm"
+          disabled
+        >
+          Оплачено
+        </BaseButton>
+      </template>
 
-      <BaseButton
-        v-else
-        wide
-        @click="deal"
-      >
-        Добавить в сделки
-      </BaseButton>
+      <template v-else>
+        <BaseButton
+          v-if="isDeal"
+          type="thirdly"
+          wide
+          size="sm"
+          @click="payHandle"
+        >
+          Оплатить
+        </BaseButton>
 
-      <BaseButton
-        :type="favBtnType"
-        @click="fav"
-      >
-        <BaseIcon name="fav" width="16" height="14" />
-      </BaseButton>
+        <BaseButton
+          v-else
+          wide
+          @click="dealHandle"
+        >
+          Добавить в сделки
+        </BaseButton>
+
+        <BaseButton
+          :type="favBtnType"
+          @click="favHandle"
+        >
+          <BaseIcon name="fav" width="16" height="14" />
+        </BaseButton>
+      </template>
     </div>
   </div>
 </template>

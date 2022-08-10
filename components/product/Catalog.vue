@@ -75,7 +75,7 @@ const activeProducts = computed(() => {
       loading
     </div>
 
-    <template v-else>
+    <template v-else-if="activeProducts">
       <section class="product-catalog">
         <div class="product-catalog__controls">
           <BaseTabs
@@ -90,12 +90,17 @@ const activeProducts = computed(() => {
           />
         </div>
 
-        <template v-if="activeProducts">
-          <ProductCard
-            v-for="product in activeProducts"
-            v-bind="product"
-            :key="product.name"
+        <template v-if="activeProducts && activeProducts.length">
+          <ProductList
+            v-if="activeProducts && activeProducts.length"
+            :products="activeProducts"
           />
+        </template>
+
+        <template v-else>
+          <p class="text-l text-accent-1">
+            Нет подходящих товаров
+          </p>
         </template>
       </section>
     </template>

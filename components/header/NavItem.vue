@@ -38,4 +38,8 @@ defineProps<NavItem>()
 .nav-item:hover {
   background-color: var(--white-gray);
 }
+
+.nav-item.router-link-active {
+  background-color: var(--white-gray);
+}
 </style>
