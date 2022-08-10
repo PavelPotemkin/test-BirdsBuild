@@ -2,9 +2,9 @@
 import { defineProps } from '@vue/runtime-core'
 import { computed } from '#imports'
 
-export interface TabItem {
+export interface TabItem<T = string> {
   name: string
-  value: string
+  value: T
 }
 
 interface Props {

@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { TabItem } from '~/components/base/Tab.vue'
 
-interface Props {
-  modelValue: string
+export interface Tabs<T = string> {
+  modelValue: T | null
   name: string
-  items: TabItem[]
+  items: TabItem<T>[]
 }
 
-const props = defineProps<Props>()
+const props = defineProps<Tabs>()
 
 const emit = defineEmits<{
   (e: 'update:modelValue', value: string): void

@@ -39,7 +39,6 @@ const classObj = computed(() => ({
   align-items: center;
   justify-content: center;
   border-radius: 10px;
-  border: 0;
   cursor: pointer;
 }
 

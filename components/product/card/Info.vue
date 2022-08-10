@@ -2,7 +2,7 @@
 import { defineProps } from '@vue/runtime-core'
 
 interface Props {
-  type: 'Аукцион' | 'Прямые продажи' | 'Прямы продажи'
+  type: 'Аукцион' | 'Прямые продажи'
   name: string
   city: string
   seller: string
@@ -18,7 +18,7 @@ defineProps<Props>()
 <template>
   <div class="product-card-info">
     <div class="product-card-info__inner">
-      <img :src="image" :alt="name" class="product-card-info__img">
+      <img :src="image" width="256" height="256" :alt="name" class="product-card-info__img">
 
       <div class="product-card-info__content">
         <p class="product-card-info__type text-accent-2 text">
@@ -71,10 +71,9 @@ defineProps<Props>()
 }
 
 .product-card-info__img {
-  width: 256px;
-  height: 256px;
   object-fit: contain;
   border-radius: 15px;
+  background-color: var(--white-gray);
 }
 
 .product-card-info__inner {

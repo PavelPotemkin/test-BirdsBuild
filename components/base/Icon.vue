@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import 'virtual:svg-icons-register'
 import { computed } from '#imports'
 
 interface Props {
@@ -11,7 +12,6 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const symbolId = computed(() => `#${props.prefix}-${props.name}`)
-
 </script>
 
 <template>

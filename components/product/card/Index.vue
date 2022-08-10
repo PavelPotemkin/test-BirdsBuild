@@ -3,7 +3,7 @@ import { defineProps } from '@vue/runtime-core'
 
 export interface Product {
   id: number,
-  type: 'Аукцион' | 'Прямые продажи' | 'Прямы продажи'
+  type: 'Аукцион' | 'Прямые продажи'
   name: string
   city: string
   seller: string
