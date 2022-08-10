@@ -2,6 +2,7 @@
 import { reactive, useFetch } from '#imports'
 import type { Product } from '~/components/product/card/Index.vue'
 import { apiUrls } from '~/api/urls'
+import 'virtual:svg-icons-register'
 
 const tabs = reactive({
   value: '',
@@ -27,38 +28,21 @@ const {
 
 <template>
   <main>
+    <BaseIcon name="bag" width="16" height="14" />
+    <BaseIcon name="box" class="fill-accent-1" />
+
     <BaseTabs
       v-model="tabs.value"
       :items="tabs.items"
       :name="tabs.name"
     />
 
-    <!--    <BaseButton>-->
-    <!--      Оплатить-->
-    <!--    </BaseButton>-->
-
-    <!--    <BaseButton type="secondary">-->
-    <!--      Оплатить-->
-    <!--    </BaseButton>-->
-
-    <!--    <BaseButton>-->
-    <!--      <IconFav width="16" height="14" />-->
-    <!--    </BaseButton>-->
-
-    <!--    <BaseButton type="thirdly" size="sm">-->
-    <!--      <IconSearch width="14" height="14" />-->
-    <!--    </BaseButton>-->
-
     <div v-if="isLoading">
       loading
     </div>
 
     <template v-else>
-      <ProductCard
-        v-for="product in products"
-        v-bind="product"
-        :key="product.name"
-      />
+      <ProductList :products="products" />
     </template>
   </main>
 </template>

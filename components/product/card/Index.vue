@@ -19,15 +19,15 @@ export interface Product {
 defineProps<Product>()
 
 const favAdd = () => {
-  console.log('favAdd')
+  // console.log('favAdd')
 }
 
 const dealAdd = () => {
-  console.log('dealAdd')
+  // console.log('dealAdd')
 }
 
 const pay = () => {
-  console.log('pay')
+  // console.log('pay')
 }
 
 </script>

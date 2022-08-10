@@ -5,6 +5,7 @@ interface Props {
   type?: 'secondary' | 'primary' | 'thirdly'
   size?: 'sm' | 'md'
   wide?: boolean
+  disabled?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -16,7 +17,8 @@ const props = withDefaults(defineProps<Props>(), {
 const classObj = computed(() => ({
   [`btn_type_${props.type}`]: true,
   [`btn_size_${props.size}`]: true,
-  btn_wide: props.wide
+  btn_wide: props.wide,
+  btn_disabled: !!props.disabled
 }))
 </script>
 
@@ -25,6 +27,7 @@ const classObj = computed(() => ({
     type="button"
     class="btn title-m"
     :class="classObj"
+    :disabled="disabled"
   >
     <slot />
   </button>
@@ -70,5 +73,10 @@ const classObj = computed(() => ({
 
 .btn_wide {
   width: 100%;
+}
+
+.btn_disabled {
+  border-color: var(--platinum);
+  color: var(--manatee);
 }
 </style>

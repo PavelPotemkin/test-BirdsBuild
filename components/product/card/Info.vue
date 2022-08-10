@@ -30,7 +30,7 @@ defineProps<Props>()
         </p>
 
         <BaseChip class="product-card-info__city">
-          <IconLocation class="fill-accent-2" width="10" height="14" />
+          <BaseIcon name="location" class="fill-accent-2" width="10" height="14" />
 
           <span class="text-m text-accent-3">
             {{ city }}

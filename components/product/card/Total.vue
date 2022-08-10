@@ -91,7 +91,7 @@ const favBtnType = computed(() => props.favorite ? 'secondary' : 'primary')
         :type="favBtnType"
         @click="fav"
       >
-        <IconFav width="16" height="14" />
+        <BaseIcon name="fav" width="16" height="14" />
       </BaseButton>
     </div>
   </div>
