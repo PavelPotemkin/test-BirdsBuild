@@ -1,12 +1,14 @@
 <script setup lang="ts">
-import { useFetch } from '#imports'
 import type { Product } from '~/components/product/card/Index.vue'
-import { apiUrls } from '~/api/urls'
 import { useProductStore } from '~/stores/product'
+import productsJson from '@/public/products.json'
 
-const { data: products } = await useFetch<(Omit<Product, 'payed' | 'deal'>)[]>(apiUrls.products)
+// fetch from servet
+// const { data: products } = await useFetch<(Omit<Product, 'payed' | 'deal'>)[]>(apiUrls.products)
 
-const filledProducts: Product[] = products.value.map(p => ({
+const filledProducts: Product[] = (productsJson as unknown as {
+  products: (Omit<Product, 'payed' | 'deal'>)[]
+}).products.map(p => ({
   ...p,
   deal: false,
   payed: false

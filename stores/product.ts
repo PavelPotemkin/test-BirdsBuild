@@ -16,6 +16,7 @@ export const useProductStore = defineStore('product', {
     favorites: null,
     deals: null
   }),
+
   actions: {
     initProducts ({
       stock,
