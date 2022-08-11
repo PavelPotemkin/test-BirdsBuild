@@ -43,7 +43,7 @@ const products = computed(() => {
     return props.products
   }
 
-  return props.products.filter(p => p.name.includes(search.value))
+  return props.products.filter(p => p.name.toLowerCase().includes(search.value.toLowerCase()))
 })
 
 const directSales = computed(() => {
